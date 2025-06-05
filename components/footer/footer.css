@@ -1,0 +1,10 @@
+.footer {
+    background-color: black;
+    padding-top: 0.5rem;
+    margin-top: 70%;
+    text-align: center;
+}
+
+.item-lista, p {
+    color: aliceblue;
+}

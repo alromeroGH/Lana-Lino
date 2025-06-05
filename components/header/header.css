@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: center;
+    background-color: black;
+
+}
+
+.header h1 {
+    color: aliceblue;
+}
