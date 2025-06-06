@@ -3,7 +3,7 @@ export function createFooter() {
         <div class="footer">
             <p>Contactos:</p>
             <ul>
-                <li class="item-lista">email: LanaAndLino@gmail.com</li>
+                <li class="item-lista">email: Lana&Lino@gmail.com</li>
                 <li class="item-lista">Whatsapp: 342 123-4567</li>
                 <li class="item-lista">Telefono: 7654-321</li>
             </ul>

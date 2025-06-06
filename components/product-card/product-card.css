@@ -1,0 +1,24 @@
+.card {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    padding: 10px;
+    width: 200px;
+    background-color:white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 90px;
+    border-radius: 10px;
+}
+
+.card-content p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color: #000;
+    font-size: 15px;
+}
