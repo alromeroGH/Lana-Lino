@@ -6,9 +6,12 @@ import { createProductCard } from '../../components/product-card/product-card.js
 const header = document.getElementById('header');
 const nav = document.getElementById('nav');
 const footer = document.getElementById('footer')
-const productCard = document.getElementById('product-card');
+const productCard = document.querySelectorAll('#product-card');
 
 header.innerHTML = createHeader();
 nav.innerHTML = createNav();
 footer.innerHTML = createFooter();
-productCard.innerHTML = createProductCard('../../assets/img/descarga.jpeg', 'Auriculares', 20000);
+for (let i = 0; i < productCard.length; i++) {
+    productCard[i].innerHTML = createProductCard('../../assets/img/descarga.jpeg', 'Auriculares', 20000);
+    
+}

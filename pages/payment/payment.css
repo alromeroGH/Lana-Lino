@@ -1,0 +1,70 @@
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: bisque;
+    padding-bottom: 10px;
+    border-radius: 8px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.products-container div {
+    padding: 6px;
+}
+
+.button-payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-payment button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 25px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1.5px solid gray;
+}
+
+.button-payment button:hover {
+    color: purple;
+    background-color:magenta;
+    cursor: pointer;
+}
+
+.type-payment-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 12px;
+    gap: 8px;
+}
+
+.type-payment-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-payment-group select {    
+    border: 1.5px solid gray;
+    border-radius: 5px;
+    width: 125px;
+}
+
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs-container input {
+    margin-top: 6px;
+}

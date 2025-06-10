@@ -1,0 +1,52 @@
+.find-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+
+.search-container {
+    display: flex;
+    gap: 8px;
+}
+
+.search input {
+    border: 1.5px solid gray;
+    border-radius: 5px;
+    height: 20px;
+    font-size: 12px;
+}
+
+.search-button button {
+    border: 1.5px solid gray;
+    border-radius: 5px;
+    width: 55px;
+    height: 22px;
+
+}
+
+.search-button button:hover {
+    color: purple;
+    cursor: pointer;
+}
+
+
+.filters-container {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-group select {
+    border: 1.5px solid gray;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0px;
+}
+
+.products-container div {
+    padding: 6px;
+}
