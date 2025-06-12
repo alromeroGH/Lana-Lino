@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../components/footer/footer.css">
     <link rel="stylesheet" href="../../components/product-card/product-card.css">
     <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="home.css   ">
 </head>
 <body>
     <header>
@@ -16,7 +17,74 @@
         <div id="nav"></div>
     </header>
     <main>
-        <div id="product-card"></div>
+        <div class="find-container">
+            <form action="">
+                <div class="search-container">
+                    <div class="search">
+                        <input type="text" name="search" id="search" placeholder="Buscar un producto...">
+                    </div>
+                    <div class="search-button">
+                        <button>Buscar</button>
+                    </div>
+                </div>
+            </form>
+            <form action="">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <select id="gender-filter">
+                            <option value="">Genero</option>
+                            <option value="all">Todos</option>
+                            <option value="male">Hombre</option>
+                            <option value="female">Mujer</option>
+                            <option value="unisex">Unisex</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="category-filter">
+                            <option value="">Categoría</option>
+                            <option value="all">Todas</option>
+                            <option value="camisetas">Camisetas</option>
+                            <option value="pantalones">Pantalones</option>
+                            <option value="zapatos">Zapatos</option>
+                            <option value="accesorios">Accesorios</option>
+                            <option value="chaquetas">Chaquetas</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="color-filter">
+                            <option value="">Color</option>
+                            <option value="all">Todas</option>
+                            <option value="negro">Negro</option>
+                            <option value="blanco">Blanco</option>
+                            <option value="rojo">Rojo</option>
+                            <option value="azul">Azul</option>
+                            <option value="rosado">Rosado</option>
+                        </select>
+                    </div>
+                    <div class="search-button">
+                        <button type="submit">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div>
+            <h1>Productos</h1>
+            <br>
+            <div class="products-container">
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+                <div id="product-card"></div>
+            </div>
+        </div>
     </main>
     <footer>
         <div id="footer"></div>
