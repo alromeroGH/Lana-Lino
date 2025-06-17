@@ -260,46 +260,103 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+INSERT INTO `categoria` (`nombre`) VALUES
+('Remeras'),
+('Pantalones'),
+('Camperas'),
+('Accesorios'),
+('Calzado'),
+('Vestidos'),
+('Faldas'),
+('Buzos');
 
--- Insertando categorías
-INSERT INTO categoria (nombre) VALUES 
-('Ropa'), ('Accesorios'), ('Calzado');
+INSERT INTO `producto` (`nombre`, `descripcion`, `precio`, `genero`, `id_categoria`, `imagen`) VALUES
+('Remera Algodón Básica', 'Remera de algodón 100%, ideal para uso diario.', 15.99, 'Unisex', 1, 'remera_basica.jpg'),
+('Jean Slim Fit', 'Jean moderno con corte ajustado, cómodo y duradero.', 45.00, 'Masculino', 2, 'jean_slim.jpg'),
+('Campera Impermeable', 'Campera ligera e impermeable, perfecta para días de lluvia.', 79.50, 'Unisex', 3, 'campera_impermeable.jpg'),
+('Gorra Deportiva', 'Gorra ajustable con logo bordado, ideal para actividades al aire libre.', 12.00, 'Unisex', 4, 'gorra_deportiva.jpg'),
+('Zapatillas Urbanas', 'Zapatillas cómodas y con estilo para el uso diario.', 65.00, 'Unisex', 5, 'zapatillas_urbanas.jpg'),
+('Vestido Verano Floral', 'Vestido fresco con estampado floral, perfecto para el verano.', 39.99, 'Femenino', 6, 'vestido_floral.jpg'),
+('Falda Plisada Midi', 'Falda elegante con plisado, ideal para un look casual o formal.', 30.50, 'Femenino', 7, 'falda_plisada.jpg'),
+('Buzo con Capucha Oversize', 'Buzo de algodón con capucha, estilo oversize para mayor comodidad.', 55.00, 'Unisex', 8, 'buzo_oversize.jpg'),
+('Remera Estampada Vintage', 'Remera de algodón con estampado estilo vintage.', 19.99, 'Unisex', 1, 'remera_estampada.jpg'),
+('Pantalón Chino Clásico', 'Pantalón chino de corte clásico, versátil para cualquier ocasión.', 40.00, 'Masculino', 2, 'pantalon_chino.jpg'),
+('Campera Denim', 'Clásica campera de jean, un infaltable en tu guardarropa.', 69.00, 'Unisex', 3, 'campera_denim.jpg'),
+('Cinturón de Cuero', 'Cinturón de cuero genuino, duradero y elegante.', 25.00, 'Unisex', 4, 'cinturon_cuero.jpg'),
+('Botas de Cuero Urbanas', 'Botas de cuero cómodas y con estilo, ideales para el invierno.', 85.00, 'Masculino', 5, 'botas_cuero.jpg'),
+('Vestido Noche Elegante', 'Vestido de noche con detalles elegantes, perfecto para eventos especiales.', 95.00, 'Femenino', 6, 'vestido_noche.jpg'),
+('Falda Corta Jean', 'Falda corta de jean, ideal para un look casual y juvenil.', 28.00, 'Femenino', 7, 'falda_jean.jpg'),
+('Buzo Cuello Redondo', 'Buzo de cuello redondo sin capucha, ideal para un look más formal.', 48.00, 'Unisex', 8, 'buzo_cuello_redondo.jpg');
 
--- Insertando usuarios
-INSERT INTO usuario (nombre, apellido, email, password, direccion, telefono, rol) VALUES
-('Juan', 'Perez', 'juan@example.com', '123456', 'Calle Falsa 123', '123456789', 'admin'),
-('Maria', 'Lopez', 'maria@example.com', 'abcdef', 'Av. Siempre Viva 456', '987654321', 'cliente');
+INSERT INTO `inventario` (`talle`, `color`, `stock`, `id_producto`) VALUES
+('S', 'Blanco', 50, 1),
+('M', 'Blanco', 60, 1),
+('L', 'Blanco', 45, 1),
+('S', 'Negro', 55, 1),
+('M', 'Negro', 65, 1),
+('L', 'Negro', 50, 1),
+('30', 'Azul Oscuro', 30, 2),
+('32', 'Azul Oscuro', 35, 2),
+('34', 'Azul Oscuro', 25, 2),
+('M', 'Gris', 20, 3),
+('L', 'Gris', 22, 3),
+('Único', 'Negro', 70, 4),
+('40', 'Blanco', 28, 5),
+('42', 'Blanco', 32, 5),
+('S', 'Floral', 15, 6),
+('M', 'Floral', 18, 6),
+('S', 'Negro', 25, 7),
+('M', 'Negro', 30, 7),
+('L', 'Negro', 20, 7),
+('M', 'Gris Melange', 40, 8),
+('L', 'Gris Melange', 35, 8),
+('XL', 'Gris Melange', 30, 8),
+('M', 'Blanco', 25, 9),
+('L', 'Negro', 20, 9),
+('32', 'Beige', 18, 10),
+('34', 'Verde Oliva', 15, 10),
+('M', 'Azul Claro', 22, 11),
+('L', 'Azul Oscuro', 19, 11),
+('Único', 'Marrón', 40, 12),
+('41', 'Negro', 15, 13),
+('43', 'Marrón', 12, 13),
+('S', 'Negro', 10, 14),
+('M', 'Rojo', 8, 14),
+('S', 'Azul Claro', 30, 15),
+('M', 'Azul Medio', 25, 15),
+('L', 'Azul Oscuro', 20, 15),
+('M', 'Negro', 35, 16),
+('L', 'Gris', 30, 16);
 
--- Insertando productos
-INSERT INTO producto (nombre, descripcion, precio, genero, id_categoria, imagen) VALUES
-('Remera Azul', 'Remera de algodón azul', 500.00, 'Unisex', 1, 'remera_azul.jpg'),
-('Pulsera de Cuero', 'Pulsera artesanal de cuero', 300.00, 'Unisex', 2, 'pulsera_cuero.jpg'),
-('Zapatillas Running', 'Zapatillas deportivas con tecnología avanzada', 2500.00, 'Masculino', 3, 'zapatillas_running.jpg');
+INSERT INTO `usuario` (`nombre`, `apellido`, `email`, `password`, `direccion`, `telefono`, `rol`) VALUES
+('Juan', 'Perez', 'juan.perez@example.com', 'pass123', 'Calle Falsa 123', '3425551111', 'cliente'),
+('Maria', 'Gomez', 'maria.gomez@example.com', 'securepass', 'Avenida Siempreviva 742', '3425552222', 'cliente'),
+('Carlos', 'Rodriguez', 'carlos.rod@example.com', 'adminpass', 'Boulevard de los Sueños 500', '3425553333', 'admin'),
+('Laura', 'Fernandez', 'laura.f@example.com', 'mypass', 'Pasaje del Sol 10', '3425554444', 'cliente'),
+('Pedro', 'Martinez', 'pedro.m@example.com', 'password01', 'Ruta 1 Km 5', '3425555555', 'cliente');
 
--- Insertando inventario
-INSERT INTO inventario (talle, color, stock, id_producto) VALUES
-('M', 'Azul', 10, 1),
-('L', 'Negro', 5, 1),
-('Único', 'Marrón', 20, 2),
-('42', 'Rojo', 7, 3);
+INSERT INTO `pedido` (`fecha_pedido`, `total`, `metodo_pago`, `estado`, `id_usuario`) VALUES
+('2025-06-10', 65.98, 'Tarjeta de Crédito', 1, 1),
+('2025-06-11', 120.00, 'Mercado Pago', 1, 2),
+('2025-06-12', 79.50, 'Transferencia Bancaria', 0, 1),
+('2025-06-12', 127.00, 'Tarjeta de Débito', 1, 4),
+('2025-06-13', 55.00, 'Mercado Pago', 0, 5);
 
--- Insertando pedidos
-INSERT INTO pedido (fecha_pedido, total, metodo_pago, estado, id_usuario) VALUES
-('2025-06-10', 800.00, 'Tarjeta', 1, 1),
-('2025-06-11', 3000.00, 'Efectivo', 0, 2);
+INSERT INTO `detalle_pedido` (`cantidad`, `precio_unitario`, `id_pedido`, `id_inventario`) VALUES
+(2, 15.99, 1, 1), -- Remera Algodón Básica, Blanco, S
+(1, 30.00, 1, 7), -- Jean Slim Fit, Azul Oscuro, 30
+(1, 45.00, 2, 7), -- Jean Slim Fit, Azul Oscuro, 30
+(1, 65.00, 2, 9), -- Zapatillas Urbanas, Blanco, 40
+(1, 79.50, 3, 10), -- Campera Impermeable, Gris, M
+(1, 65.00, 4, 11), -- Zapatillas Urbanas, Blanco, 42
+(1, 40.00, 4, 23), -- Pantalón Chino Clásico, Beige, 32
+(1, 55.00, 5, 17); -- Buzo con Capucha Oversize, Gris Melange, M
 
--- Insertando detalles de pedidos
-INSERT INTO detalle_pedido (cantidad, precio_unitario, id_pedido, id_inventario) VALUES
-(2, 500.00, 1, 1),
-(1, 300.00, 1, 2),
-(1, 2500.00, 2, 3);
-
--- Insertando favoritos
-INSERT INTO favorito (id_usuario, id_producto) VALUES
-(1, 3),
-(2, 1);
-
-
--- CREATE USER 'node_user'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345';
--- GRANT ALL PRIVILEGES ON lanaylino.* TO 'node_user'@'localhost';
--- FLUSH PRIVILEGES;
+INSERT INTO `favorito` (`id_usuario`, `id_producto`) VALUES
+(1, 1),
+(1, 5),
+(2, 2),
+(2, 8),
+(4, 6),
+(5, 1),
+(5, 3);

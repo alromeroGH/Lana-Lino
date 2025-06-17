@@ -18,13 +18,13 @@
     </header>
     <main>
         <div class="find-container">
-            <form action="">
+            <form id="form-search" action="/api/obtenerProductos" method="GET">
                 <div class="search-container">
                     <div class="search">
                         <input type="text" name="search" id="search" placeholder="Buscar un producto...">
                     </div>
                     <div class="search-button">
-                        <button>Buscar</button>
+                        <button type="submit">Buscar</button>
                     </div>
                 </div>
             </form>
@@ -74,15 +74,6 @@
             <h1>Productos</h1>
             <br>
             <div class="products-container">
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
-                <div id="product-card"></div>
             </div>
         </div>
     </main>
