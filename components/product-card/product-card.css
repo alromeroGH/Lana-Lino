@@ -43,3 +43,7 @@
     width: 24px;
     height: 24px;
 }
+
+a {
+  text-decoration: none;
+}

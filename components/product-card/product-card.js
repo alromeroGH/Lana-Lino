@@ -5,7 +5,7 @@ export function createProductCard(imgUrl, name, price, id) {
                 <a href="../product/product.html"><img src="${imgUrl}" alt=""></a>
             </div>
             <div class="card-content">
-                <p>${name}</p>
+                <a href="../product/product.html"><p>${name}</p></a>
                 <hr/>
                 <p>$${price}</p>
             </div>
