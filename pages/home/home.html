@@ -18,7 +18,7 @@
     </header>
     <main>
         <div class="find-container">
-            <form id="form-search" action="/api/obtenerProductos" method="GET">
+            <form id="form-search" action="/api/obtenerProductos" method="get">
                 <div class="search-container">
                     <div class="search">
                         <input type="text" name="search" id="search" placeholder="Buscar un producto...">
@@ -28,14 +28,14 @@
                     </div>
                 </div>
             </form>
-            <form action="">
+            <form id="form-filter" action="/api/obtenerProductos" method="get">
                 <div class="filters-container">
                     <div class="filter-group">
                         <select id="gender-filter">
                             <option value="">Genero</option>
                             <option value="all">Todos</option>
-                            <option value="male">Hombre</option>
-                            <option value="female">Mujer</option>
+                            <option value="masculino">Hombre</option>
+                            <option value="femenino">Mujer</option>
                             <option value="unisex">Unisex</option>
                         </select>
                     </div>
@@ -44,18 +44,21 @@
                         <select id="category-filter">
                             <option value="">Categoría</option>
                             <option value="all">Todas</option>
-                            <option value="camisetas">Camisetas</option>
+                            <option value="remeras">Remeras</option>
                             <option value="pantalones">Pantalones</option>
-                            <option value="zapatos">Zapatos</option>
+                            <option value="camperas">Camperas</option>
                             <option value="accesorios">Accesorios</option>
-                            <option value="chaquetas">Chaquetas</option>
+                            <option value="calzado">Calzado</option>
+                            <option value="vestidos">Vestidos</option>
+                            <option value="faldas">Faldas</option>
+                            <option value="buzos">Buzos</option>
                         </select>
                     </div>
 
                     <div class="filter-group">
                         <select id="color-filter">
                             <option value="">Color</option>
-                            <option value="all">Todas</option>
+                            <option value="all">Todos</option>
                             <option value="negro">Negro</option>
                             <option value="blanco">Blanco</option>
                             <option value="rojo">Rojo</option>
