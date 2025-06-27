@@ -26,7 +26,7 @@ const productDescription = document.querySelector('.product-description');
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-console.log(await getProduct(id));
+// console.log(await getProduct(id));
 const product = await getProduct(id);
 
 function getData() {
