@@ -58,13 +58,12 @@
 
 .product-price {
   font-size: 1.5rem;
-  color: #27ae60;
   margin-bottom: 20px;
 }
 
 .add-to-cart-button {
   padding: 12px 20px;
-  background: #27ae60;
+  background: purple;
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -75,7 +74,7 @@
 }
 
 .add-to-cart-button:hover {
-  background: #2ecc71;
+  background: rgb(182, 28, 182);
 }
 
 .installments-calculator {

@@ -7,6 +7,8 @@ export async function getProduct(id) {
         });
         const data = await response.json();
         // console.log("Producto:", data.payload[0]);
+        const inventario = data.payload;
+        console.log(inventario[0])
         return data.payload[0];
       } catch (error) {
         console.error("Error al mostrar favoritos:", error);
