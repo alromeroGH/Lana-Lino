@@ -1,7 +1,8 @@
 import { createHeader } from '../../components/header/header.js';
 import { createNav } from '../../components/nav/nav.js';
 import { createFooter } from '../../components/footer/footer.js';
-import { createProductCard } from '../../components/product-card/product-card.js';
+import { createProductCardFavorite } from '../../components/product-card/product-card.js';
+import { parseJwt } from '../../components/user-id/user-id.js';
 
 const header = document.getElementById('header');
 const nav = document.getElementById('nav');
@@ -21,92 +22,104 @@ footer.innerHTML = createFooter();
 
 let products = [];
 
+const token = localStorage.getItem("token");
+const idUser = parseJwt(token).sub;
 
 async function getProducts() {
-    fetch("http://localhost:4000/api/obtenerProductos")
-  .then((response) => response.json())
-  .then((data) => {
+  try {
+    const response = await fetch("http://localhost:4000/api/obtenerProductos");
+    const data = await response.json();
     products = [];
     data.payload.forEach((p) => {
-        products += `<div class="product-card">
-        ${createProductCard(
-        "../../assets/img/descarga.jpeg",
-        p.producto,
-        p.precio
-      )}
-      </div>`;
+      products += addProduct(p.producto, p.precio, p.id_producto);
     });
     if (products.length === 0) {
-      productContainer.innerHTML = '<div>No hay productos</div>'
+      productContainer.innerHTML = '<div>No hay productos</div>';
     } else {
       productContainer.innerHTML = products;
     }
-  })
-  .catch((error) => console.error("Error al obtener productos:", error));
+  } catch (error) {
+    console.error("Error al obtener productos:", error);
+  }
 }
 
 async function searchProducts(search) {
-  fetch("http://localhost:4000/api/obtenerProductos")
-    .then((response) => response.json())
-    .then((data) => {
-      let products = [];
-      data.payload.forEach((p) => {
-        if (p.producto.toLowerCase().includes(search.toLowerCase())) {
-          products += `<div class="product-card">
-            ${createProductCard(
-              "../../assets/img/descarga.jpeg",
-              p.producto,
-              p.precio
-            )}
-          </div>`;
-        }
-      });
-      if (products.length === 0) {
-        productContainer.innerHTML = '<div>No se encontraron productos</div>'
-      } else {
-        productContainer.innerHTML = products;
+  try {
+    const response = await fetch("http://localhost:4000/api/obtenerProductos");
+    const data = await response.json();
+    let products = [];
+    data.payload.forEach((p) => {
+      if (p.producto.toLowerCase().includes(search.toLowerCase())) {
+        products += addProduct(p.producto, p.precio, p.id_producto);
       }
-    })
-    .catch((error) => console.error("Error al obtener productos:", error));
+    });
+    if (products.length === 0) {
+      productContainer.innerHTML = '<div>No se encontraron productos</div>';
+    } else {
+      productContainer.innerHTML = products;
+    }
+  } catch (error) {
+    console.error("Error al buscar productos:", error);
+  }
 }
 
 async function filterProducts(gender, category, color) {
-  fetch("http://localhost:4000/api/obtenerProductos")
-    .then((response) => response.json())
-    .then((data) => {
-      let products = [];
-      data.payload.forEach((p) => {
-        if (gender === 'all' &&
-              p.categoria.toLowerCase() == category.toLowerCase()) {
-          products += addProduct(p.producto, p.precio);
-        } else if (category === 'all' &&
-              p.genero.toLowerCase() == gender.toLowerCase()) {
-          products += addProduct(p.producto, p.precio);
-        } else if (p.genero.toLowerCase() == gender.toLowerCase() &&
-              p.categoria.toLowerCase() == category.toLowerCase()) {
-          products += addProduct(p.producto, p.precio);
-        }
-      });
-      if (products.length === 0) {
-        productContainer.innerHTML = '<div>No se encontraron coincidiencias</div>'
-      } else {
-        productContainer.innerHTML = products;
+  try {
+    const response = await fetch("http://localhost:4000/api/obtenerProductos");
+    const data = await response.json();
+    let products = [];
+    data.payload.forEach((p) => {
+      if (
+        (gender === 'all' && p.categoria.toLowerCase() === category.toLowerCase()) ||
+        (category === 'all' && p.genero.toLowerCase() === gender.toLowerCase()) ||
+        (p.genero.toLowerCase() === gender.toLowerCase() && p.categoria.toLowerCase() === category.toLowerCase())
+      ) {
+        products += addProduct(p.producto, p.precio, p.id_producto);
       }
-    })
-    .catch((error) => console.error("Error al obtener productos:", error));
+    });
+    if (products.length === 0) {
+      productContainer.innerHTML = '<div>No se encontraron coincidencias</div>';
+    } else {
+      productContainer.innerHTML = products;
+    }
+  } catch (error) {
+    console.error("Error al filtrar productos:", error);
+  }
 }
 
-function addProduct(producto, precio) {
+async function addFavorite(idProduct) {
+  try {
+    const response = await fetch("http://localhost:4000/api/agregarFavorito/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", 
+         'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        id_producto: idProduct,
+        id_usuario: idUser
+      })
+    });
+    const data = await response.json();
+    console.log("Favorito agregado:", data);
+    alert('Producto agregado a favoritos!');
+  } catch (error) {
+    console.error("Error al agregar favorito:", error);
+  }
+}
+
+function addProduct(producto, precio, idProduct) {
   return `<div class="product-card">
-            ${createProductCard(
+            ${createProductCardFavorite(
               "../../assets/img/descarga.jpeg",
               producto,
-              precio
+              precio,
+              idProduct,
+              idUser
             )}
           </div>`;
 }
 
-formSearch.addEventListener('submit', (event) => {
+formSearch.addEventListener('submit', function(event) {
     event.preventDefault();
     searchProducts(search.value);
 })
@@ -116,4 +129,14 @@ formFilter.addEventListener('submit', function(event) {
   filterProducts(gender.value, category.value, color.value);
 })
 
+function lookProduct(idProduct) {
+  window.location.href = '../product/product.html';
+}
+
  getProducts();
+
+ // Hacerla accesible la función addFavorite() desde el HTML generado
+window.addFavorite = addFavorite;
+
+// Hacerla accesible la función lookProduct() desde el HTML generado
+window.lookProduct = lookProduct;

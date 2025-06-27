@@ -14,6 +14,10 @@ header.innerHTML = createHeader();
 nav.innerHTML = createNav();
 footer.innerHTML = createFooter();
 
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+console.log(id)
+
 let products = [];
 let total = 0;
 
