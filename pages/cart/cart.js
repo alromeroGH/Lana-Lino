@@ -6,7 +6,6 @@ import { createProductCardCart } from '../../components/product-card/product-car
 const header = document.getElementById('header');
 const nav = document.getElementById('nav');
 const footer = document.getElementById('footer');
-const productCard = document.querySelectorAll('#product-card'); 
 const payment = document.getElementById('payment');
 const productContainer = document.querySelector('.products-container');
 const totalPrice = document.getElementById('total-price');
@@ -14,9 +13,10 @@ const totalPrice = document.getElementById('total-price');
 header.innerHTML = createHeader();
 nav.innerHTML = createNav();
 footer.innerHTML = createFooter();
-for (let i = 0; i < productCard.length; i++) {
-    productCard[i].innerHTML = createProductCardCart('../../assets/img/descarga.jpeg', 'Auriculares', 20000);
-}
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+console.log(id)
 
 let products = [];
 let total = 0;
