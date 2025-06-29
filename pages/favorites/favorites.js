@@ -18,7 +18,7 @@ footer.innerHTML = createFooter();
 const token = localStorage.getItem("token");
 const idUser = parseJwt(token).sub;
 
-async function getFavorites() {
+export async function getFavorites() {
   try {
     const response = await fetch(`http://localhost:4000/api/obtenerFavoritos/${idUser}`, {
       method: "GET",
@@ -32,14 +32,14 @@ async function getFavorites() {
         data.payload.map(async element => {
         let product = await getProduct(element.idProducto);
         return createProductCardCart('../../assets/img/descarga.jpeg', 
-            product.producto, product.precio, product.id_producto);
+            product[0].producto, product[0].precio, product[0].id_producto);
     })
     );
-    // console.log(products)
     if (products.length === 0) {
       productsContainer.innerHTML = '<div>No hay productos</div>';
     } else {
       productsContainer.innerHTML = products.join(' ');
+      localStorage.setItem('favorites', data.payload.map(f => f.idProducto));
     }
   } catch (error) {
     console.error("Error al mostrar favoritos:", error);

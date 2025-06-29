@@ -17,7 +17,7 @@ export function createProductCardCart(imgUrl, name, price, idProduct) {
     return `
         <div class="card">
             <div>
-                <a href="../product/product.html"><img src="${imgUrl}" alt=""></a>
+                <a href="../product/product.html?id=${idProduct}"><img src="${imgUrl}" alt=""></a>
             </div>
             <div class="card-content">
                 <p>${name}</p>

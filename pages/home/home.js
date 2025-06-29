@@ -25,6 +25,8 @@ let products = [];
 const token = localStorage.getItem("token");
 const idUser = parseJwt(token).sub;
 
+const favorites = localStorage.getItem("favorites");
+
 async function getProducts() {
   try {
     const response = await fetch("http://localhost:4000/api/obtenerProductos");
@@ -88,6 +90,11 @@ async function filterProducts(gender, category, color) {
 }
 
 async function addFavorite(idProduct) {
+  if (favorites.includes(idProduct)) {
+    alert('Este producto ya está en tus favoritos.')
+    return;
+  }
+
   try {
     const response = await fetch("http://localhost:4000/api/agregarFavorito/", {
       method: "POST",
@@ -129,14 +136,7 @@ formFilter.addEventListener('submit', function(event) {
   filterProducts(gender.value, category.value, color.value);
 })
 
-function lookProduct(idProduct) {
-  window.location.href = '../product/product.html';
-}
-
- getProducts();
+getProducts();
 
  // Hacerla accesible la función addFavorite() desde el HTML generado
 window.addFavorite = addFavorite;
-
-// Hacerla accesible la función lookProduct() desde el HTML generado
-window.lookProduct = lookProduct;
