@@ -29,22 +29,12 @@
             <div class="product-options">
                 <div class="option-group">
                     <label for="size-select">Talles Disponibles:</label>
-                    <select id="size-select">
-                        <option value="S">S (38-39)</option>
-                        <option value="M">M (40-41)</option>
-                        <option value="L">L (42-43)</option>
-                        <option value="XL">XL (44-45)</option>
-                    </select>
+                    <select id="size-select"></select>
                 </div>
 
                 <div class="option-group">
                     <label for="color-select">Color:</label>
-                    <select id="color-select">
-                        <option value="black">Negro</option>
-                        <option value="white">Blanco</option>
-                        <option value="red">Rojo</option>
-                        <option value="blue">Azul</option>
-                    </select>
+                    <select id="color-select"></select>
                 </div>
             </div>
 
@@ -53,6 +43,7 @@
             <div class="product-price">$ <span id="product-base-price"></span></div>
 
             <button class="add-to-cart-button" id="add-to-cart-btn"></button>
+            <div style="color: red;" id="err"></div>
 
             <div class="installments-calculator">
                 <label for="installments-select">Ver cuotas:</label>

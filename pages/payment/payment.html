@@ -32,17 +32,23 @@
                             <option value="debito">Débito</option>
                             <option value="credito">Crédito</option>
                         </select>
+                        <div style="color: red;" id="err-type"></div>
                     </div>
                     <div class="inputs-container">
-                        <input type="number" name="number-card" id="number-card" placeholder="Número de la tarjeta">
-                        <input type="number" name="vencimiento" id="vencimiento" placeholder="Vencimiento">
-                        <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                        <input type="number" name="number-card" id="number-card" placeholder="Número tarjeta sin ' - '" hidden>
+                        <div style="color: red;" id="err-num"></div>
+                        <input type="date" name="expiration" id="expiration" placeholder="Vencimiento" hidden>
+                        <div style="color: red;" id="err-expiration"></div>
+                        <input type="text" name="name" id="name" placeholder="Nombre" hidden>
+                        <div style="color: red;" id="err-name"></div>
                     </div>
                 </div>
                 <div class="button-payment">
                     <button type="submit">Pagar</button>
                 </div>
             </form>
+            <br>
+            <a href="../cart/cart.html">Volver</a>
         </div>
     </main>
     <footer>
