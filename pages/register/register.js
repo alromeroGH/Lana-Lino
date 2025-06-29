@@ -21,13 +21,14 @@ async function registrarUsuario(){
     let telefono = document.getElementById('register-phone').value;
     let email = document.getElementById('register-email').value;
     let password = document.getElementById('register-password').value;
+    let rol = 'cliente';
     
     if (!nombre || !apellido || !direccion || !telefono || !email || !password) {
         alert('Por favor, completá todos los campos.');
     return;
     }
 
-    let body = {nombre, apellido, direccion, telefono, email, password};
+    let body = {nombre, apellido, direccion, telefono, email, rol, password};
     console.log(body);
 
     try{

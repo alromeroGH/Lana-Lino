@@ -79,12 +79,12 @@
 }
 
 #btn-modificar {
-    background-color: #007bff;
+    background-color: purple;
     color: white;
 }
 
 #btn-modificar:hover {
-    background-color: #0056b3;
+    background-color: rgb(182, 28, 182);
     transform: translateY(-2px);
 }
 

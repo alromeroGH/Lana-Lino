@@ -74,7 +74,7 @@ function cancelarEdicion() {
 }
 
 async function obtenerDatos() {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("token");
 
     if (!token) {
         console.warn('No hay token. Redirigiendo al login.');
@@ -139,7 +139,7 @@ async function obtenerDatos() {
 }
 
 async function guardarCambios() {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("token");
     const userId = parseJwt(token).id;
 
     if (!token || !userId) {
@@ -155,6 +155,7 @@ async function guardarCambios() {
         direccion: elements.direccion.value,
         telefono: elements.telefono.value,
         email: elements.email.value,
+        rol: 'cliente',
         password: elements.password.value, 
     };
 

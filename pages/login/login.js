@@ -39,7 +39,7 @@ async function iniciarSesion() {
 
     if (token) {
       alert('Inicio de sesión exitoso.');
-      localStorage.setItem("jwtToken", token);
+      localStorage.setItem("token", token);
       window.location.href = '../home/home.html';
     } else {
       alert('Inicio de sesión exitoso, pero no se recibió el token. Intenta de nuevo.');

@@ -7,3 +7,17 @@
 body {
     background-color: seashell;
 }
+
+.item-lista {
+    display: inline-flex;
+    padding: 0.3rem;
+}
+
+.item-lista a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.item-lista a:hover {
+    color: blueviolet;
+}

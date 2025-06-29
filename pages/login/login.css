@@ -52,7 +52,7 @@
     width: 100%;
     padding: 10px;
     font-size: 15px;
-    background-color: #007bff;
+    background-color: purple;
     color: white;
     border: none;
     border-radius: 6px;
@@ -61,7 +61,7 @@
 }
 
 #btn-login:hover {
-    background-color: #0056b3;
+    background-color: rgb(182, 28, 182);
 }
 
 .login p {
@@ -71,7 +71,7 @@
 }
 
 .login a {
-    color: #007bff;
+    color: blueviolet;
     text-decoration: none;
 }
 

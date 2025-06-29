@@ -69,7 +69,7 @@ main {
 
 /* --- Button Styling --- */
 button[type="submit"] {
-    background-color: #28a745;
+    background-color: purple;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -82,7 +82,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #218838;
+    background-color: rgb(182, 28, 182);
     transform: translateY(-2px);
 }
 
