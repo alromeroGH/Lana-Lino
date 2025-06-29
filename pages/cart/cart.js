@@ -19,7 +19,7 @@ const params = new URLSearchParams(window.location.search);
 const idInventory = params.get("id");
 
 const token = localStorage.getItem("token");
-const idUser = parseJwt(token).sub;
+const idUser = parseJwt(token).id;
 
 let products = [];
 let total = 0;

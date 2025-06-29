@@ -23,7 +23,9 @@ footer.innerHTML = createFooter();
 let products = [];
 
 const token = localStorage.getItem("token");
-const idUser = parseJwt(token).sub;
+const idUser = parseJwt(token).id;
+console.log(idUser)
+console.log(token)
 
 const favorites = localStorage.getItem("favorites");
 

@@ -9,3 +9,108 @@ const footer = document.getElementById('footer')
 header.innerHTML = createHeader();
 nav.innerHTML = createAdminNav();
 footer.innerHTML = createFooter();
+
+
+const productForm = document.getElementById('add-product'); 
+const productNameInput = document.getElementById('product-name');
+const productDescriptionInput = document.getElementById('product-description');
+const productPriceInput = document.getElementById('product-cost');
+const productGenreInput = document.getElementById('product-genre');
+const productImageInput = document.getElementById('product-image');
+
+
+loadCategories();
+
+async function loadCategories() {
+    try {
+        const token = localStorage.getItem('token');
+        const headers = {};
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
+        const response = await fetch('http://localhost:4000/api/obtenerCategorias', {
+            method: 'GET',
+            headers: headers 
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error al cargar categorías:', errorData);
+            return;
+        }
+
+        const data = await response.json();
+        const productCategorySelect = document.getElementById('product-category'); // <-- AÑADÍ ESTO
+
+        if (data.codigo === 200 && data.payload && data.payload.length > 0) {
+            productCategorySelect.innerHTML = '<option value="">Selecciona una categoría</option>'; 
+            data.payload.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id_categoria;
+                option.textContent = category.nombre;
+                productCategorySelect.appendChild(option);
+            });
+        } else {
+            console.warn('Backend devolvió categorías vacías o error:', data);
+        }
+    } catch (error) {
+        console.error('Error de conexión al cargar categorías:', error);
+    }
+}
+
+
+productForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); 
+    const nombre = productNameInput.value;
+    const descripcion = productDescriptionInput.value;
+    const precio = parseFloat(productPriceInput.value); 
+    const genero = productGenreInput.value;
+    const categoriaNombre = productCategorySelect.value;
+    const imagen = productImageInput.value; 
+    if (!nombre || !descripcion || isNaN(precio) || !genero || !categoriaNombre || !imagen) {
+        alert('Por favor, completa todos los campos.', 'error');
+        return;
+    }
+    if (precio <= 0) {
+        alert('El precio debe ser un valor positivo.', 'error');
+        return;
+    }
+    const formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('descripcion', descripcion);
+    formData.append('precio', precio);
+    formData.append('genero', genero);
+    formData.append('id_categoria', categoriaNombre);
+    formData.append('imagen', imagen);
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+        alert('Debes iniciar sesión para cargar productos.', 'error');
+        return;
+    }
+    try {
+        const response = await fetch('http://localhost:4000/api/cargarProducto', { // Ajusta esta URL si es diferente
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            },
+            body: formData,
+        });
+        const data = await response.json();
+        if (response.ok) { 
+            if (data.codigo === 200) {
+                alert(data.mensaje || 'Producto registrado exitosamente!', 'success');
+                
+            } else {
+                alert(data.mensaje || 'Error al registrar el producto.', 'error');
+                console.error('Error de registro del backend:', data);
+            }
+        } else {
+            alert(data.mensaje || `Error del servidor: ${response.status} ${response.statusText}`, 'error');
+            console.error('Respuesta HTTP de error:', data);
+        }
+    } catch (error) {
+        console.error('Error de conexión al registrar el producto:', error);
+        alert('No se pudo conectar al servidor para registrar el producto. Inténtalo de nuevo.', 'error');
+    }
+});
