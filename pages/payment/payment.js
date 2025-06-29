@@ -22,7 +22,7 @@ header.innerHTML = createHeader();
 footer.innerHTML = createFooter();
 
 const token = localStorage.getItem("token");
-const idUser = parseJwt(token).sub;
+const idUser = parseJwt(token).id;
 
 let products = [];
 let total = 0;

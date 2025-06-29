@@ -6,14 +6,48 @@
     <title>Registro</title>
     <link rel="stylesheet" href="../../components/header/header.css">
     <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
     <header>
         <div id="header"></div>
     </header>
 </body>
-<main>
-    
+<main class="register-main">
+    <div class="register">
+      <h2>Registrarse</h2>
+      <form class="register-form" id="form-register">
+        <div class="form-group">
+          <label for="register-name">Nombre:</label>
+          <input type="text" id="register-name" required />
+        </div>
+        <div class="form-group">
+          <label for="register-surname">Apellido:</label>
+          <input type="text" id="register-surname" required />
+        </div>
+        <div class="form-group">
+          <label for="register-address">Dirección:</label>
+          <input type="text" id="register-address" required />
+        </div>
+        <div class="form-group">
+          <label for="register-phone">Teléfono:</label>
+          <input type="tel" id="register-phone" required />
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email:</label>
+          <input type="email" id="register-email" required />
+        </div>
+        <div class="form-group">
+          <label for="register-password">Contraseña:</label>
+          <input type="password" id="register-password" required />
+        </div>
+        <button type="button" id="btn-register">Registrarse </button>
+        <p>
+          ¿Ya tienes cuenta?
+          <a href="../login/login.html">Inicia Sesión</a>
+        </p>
+      </form>
+    </div>
 </main>
 <script type="module" src="register.js"></script>
 </html>
