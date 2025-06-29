@@ -1,5 +1,7 @@
 import { createHeader } from '../../components/header/header.js';
 
+localStorage.clear('token');
+
 const header = document.getElementById('header');
 header.innerHTML = createHeader(); // Esto está bien
 
@@ -38,7 +40,6 @@ async function iniciarSesion() {
     const token = data.jwt;
 
     if (token) {
-      alert('Inicio de sesión exitoso.');
       localStorage.setItem("token", token);
       window.location.href = '../home/home.html';
     } else {

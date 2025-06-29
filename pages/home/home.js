@@ -24,10 +24,6 @@ let products = [];
 
 const token = localStorage.getItem("token");
 const idUser = parseJwt(token).id;
-console.log(idUser)
-console.log(token)
-
-const favorites = localStorage.getItem("favorites");
 
 async function getProducts() {
   try {
@@ -92,10 +88,6 @@ async function filterProducts(gender, category, color) {
 }
 
 async function addFavorite(idProduct) {
-  if (favorites.includes(idProduct)) {
-    alert('Este producto ya está en tus favoritos.')
-    return;
-  }
 
   try {
     const response = await fetch("http://localhost:4000/api/agregarFavorito/", {
