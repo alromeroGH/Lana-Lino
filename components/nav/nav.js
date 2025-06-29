@@ -1,7 +1,7 @@
 import { parseJwt } from '../../components/user-id/user-id.js';
 
 const token = localStorage.getItem("token");
-const idUser = parseJwt(token).sub;
+const idUser = parseJwt(token).id;
 
 let rol = await getUser();
 

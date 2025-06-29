@@ -33,18 +33,19 @@
                 </div>
                 <div class="form-group">
                     <label for="product-genre">Genero:</label>
-                    <input type="text" id="product-genre" required>
-                </div>
-                <div class="form-group">
-                    <select id="product-category" name="id_categoria" required>
-                        <option value="">Selecciona una categoría</option>
+                    <select id="product-genre">
+                            <option value="masculino">Hombre</option>
+                            <option value="femenino">Mujer</option>
+                            <option value="unisex">Unisex</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="product-image">Imagen del Producto:</label>
-                    <input type="text" id="product-image" required>
+                    <label for="product-category">Selecciona una categoría</label>
+                    <select id="product-category" name="id_categoria" required>
+                    </select>
                 </div>
                 <button type="submit">Registrar Producto</button>
+                <a href="../manage-products/manage-products.html">Modificar productos</a>
             </form>
         </div>
     </main>

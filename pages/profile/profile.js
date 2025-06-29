@@ -79,18 +79,17 @@ async function obtenerDatos() {
     if (!token) {
         console.warn('No hay token. Redirigiendo al login.');
         alert('Necesitas iniciar sesión para ver este perfil.');
-        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('token');
         window.location.href = '../login/login.html';
         return;
     }
 
     const userId = parseJwt(token).id;
     console.log("UserID extraído del token:", userId);
-
     if (!userId) {
         console.error('No se pudo obtener el ID del usuario del token. Redirigiendo.');
         alert('Error al autenticar tu sesión. Por favor, inicia sesión de nuevo.');
-        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('token');
         window.location.href = '../login/login.html';
         return;
     }
@@ -144,7 +143,7 @@ async function guardarCambios() {
 
     if (!token || !userId) {
         alert('Sesión no válida. Por favor, inicia sesión de nuevo.');
-        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('token');
         window.location.href = '../login/login.html';
         return;
     }
@@ -178,7 +177,7 @@ async function guardarCambios() {
             console.error('Error del servidor al guardar cambios:', errorData);
             alert(errorData.mensaje || 'Error al guardar los cambios en el perfil.');
             if (errorData.mensaje && errorData.mensaje.includes("Token")) {
-                localStorage.removeItem('jwtToken');
+                localStorage.removeItem('token');
                 window.location.href = '../login/login.html';
             }
             return;
@@ -198,4 +197,4 @@ async function guardarCambios() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', obtenerDatos);
+document.addEventListener('DOMContentLoaded', obtenerDatos());

@@ -16,7 +16,7 @@ const productNameInput = document.getElementById('product-name');
 const productDescriptionInput = document.getElementById('product-description');
 const productPriceInput = document.getElementById('product-cost');
 const productGenreInput = document.getElementById('product-genre');
-const productImageInput = document.getElementById('product-image');
+const productCategorySelect = document.getElementById('product-category'); 
 
 
 loadCategories();
@@ -41,10 +41,8 @@ async function loadCategories() {
         }
 
         const data = await response.json();
-        const productCategorySelect = document.getElementById('product-category'); // <-- AÑADÍ ESTO
 
         if (data.codigo === 200 && data.payload && data.payload.length > 0) {
-            productCategorySelect.innerHTML = '<option value="">Selecciona una categoría</option>'; 
             data.payload.forEach(category => {
                 const option = document.createElement('option');
                 option.value = category.id_categoria;
@@ -67,8 +65,8 @@ productForm.addEventListener('submit', async (event) => {
     const precio = parseFloat(productPriceInput.value); 
     const genero = productGenreInput.value;
     const categoriaNombre = productCategorySelect.value;
-    const imagen = productImageInput.value; 
-    if (!nombre || !descripcion || isNaN(precio) || !genero || !categoriaNombre || !imagen) {
+    const imagen = '../../../assets/img/descarga.jpeg'; 
+    if (!nombre || !descripcion || isNaN(precio) || !genero || !categoriaNombre ) {
         alert('Por favor, completa todos los campos.', 'error');
         return;
     }
@@ -76,25 +74,29 @@ productForm.addEventListener('submit', async (event) => {
         alert('El precio debe ser un valor positivo.', 'error');
         return;
     }
-    const formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('descripcion', descripcion);
-    formData.append('precio', precio);
-    formData.append('genero', genero);
-    formData.append('id_categoria', categoriaNombre);
-    formData.append('imagen', imagen);
-    const token = localStorage.getItem('token'); 
+    const body = {
+        nombre,
+        descripcion,
+        precio,
+        genero,
+        id_categoria: categoriaNombre,
+        imagen
+    };
+
+    let token = localStorage.getItem('token');
+
     if (!token) {
         alert('Debes iniciar sesión para cargar productos.', 'error');
         return;
     }
     try {
-        const response = await fetch('http://localhost:4000/api/cargarProducto', { // Ajusta esta URL si es diferente
+        const response = await fetch('http://localhost:4000/api/cargarProducto', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}` 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            body: formData,
+            body: JSON.stringify(body)
         });
         const data = await response.json();
         if (response.ok) { 
@@ -112,5 +114,5 @@ productForm.addEventListener('submit', async (event) => {
     } catch (error) {
         console.error('Error de conexión al registrar el producto:', error);
         alert('No se pudo conectar al servidor para registrar el producto. Inténtalo de nuevo.', 'error');
-    }
+    }
 });

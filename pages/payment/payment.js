@@ -74,6 +74,7 @@ function validPay() {
   if (typePayment.value === '') {
     errType.innerHTML = 'El campo no puede estar vacío.';
     haveErrors[0] = true;
+    return;
   } else {
     errType.innerHTML = '';
     haveErrors[0] = false;
@@ -81,6 +82,7 @@ function validPay() {
 
   if (typePayment.value == 'transferecia') {
     window.location.href = 'https://www.mercadopago.com';
+    return;
   }
 
   if (numberCard.value === '') {
@@ -126,6 +128,10 @@ typePayment.addEventListener('change', function(event) {
     numberCard.hidden = '';
     expiration.hidden = '';
     nameCard.hidden = '';
+  } else {
+    numberCard.hidden = true;
+    expiration.hidden = true;
+    nameCard.hidden = true;
   }
 })
 

@@ -39,7 +39,6 @@ export async function getFavorites() {
       productsContainer.innerHTML = '<div>No hay productos</div>';
     } else {
       productsContainer.innerHTML = products.join(' ');
-      localStorage.setItem('favorites', data.payload.map(f => f.idProducto));
     }
   } catch (error) {
     console.error("Error al mostrar favoritos:", error);
