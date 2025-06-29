@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../components/nav/nav.css">
     <link rel="stylesheet" href="../../components/footer/footer.css">
     <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="porfile.css">
 </head>
 <body>
     <header>
@@ -15,7 +16,33 @@
         <div id="nav"></div>
     </header>
     <main>
+        <div class="profile-container">
+            <h2>Perfil</h2>
 
+            <div class="item">
+                <p>Nombre:</p> <span id="nombre" data-field="nombre"></span>
+            </div>
+            <div class="item">
+                <p>Apellido:</p> <span id="apellido" data-field="apellido"></span>
+            </div>
+            <div class="item">
+                <p>Dirección:</p> <span id="direccion" data-field="direccion"></span>
+            </div>
+            <div class="item">
+                <p>Teléfono:</p> <span id="telefono" data-field="telefono"></span>
+            </div>
+            <div class="item">
+                <p>Email:</p> <span id="email" data-field="email"></span>
+            </div>
+            <div class="item">
+                <p>Contraseña:</p> <span id="contraseña" data-field="password"></span> </div>
+
+            <div class="profile-actions">
+                <button id="btn-modificar">Modificar Perfil</button>
+                <button id="btn-guardar" style="display: none;">Guardar Cambios</button>
+                <button id="btn-cancelar" style="display: none;">Cancelar</button>
+            </div>
+        </div>
     </main>
     <footer>
         <div id="footer"></div>
