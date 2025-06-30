@@ -27,6 +27,46 @@ async function registrarUsuario(){
     return;
     }
 
+    if (!nombre.trim()) {
+  alert('El nombre no puede estar vacío.');
+  return;
+}
+
+if (!apellido.trim()) {
+  alert('El apellido no puede estar vacío.');
+  return;
+}
+
+if (!direccion.trim()) {
+  alert('La dirección no puede estar vacía.');
+  return;
+}
+
+if (!telefono.trim()) {
+  alert('El teléfono no puede estar vacío.');
+  return;
+} else if (!/^\d{7,15}$/.test(telefono)) {
+  alert('El teléfono debe contener solo números (7 a 15 dígitos).');
+  return;
+}
+
+if (!email.trim()) {
+  alert('El email no puede estar vacío.');
+  return;
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  alert('Ingresá un email válido.');
+  return;
+}
+
+if (!password.trim()) {
+  alert('La contraseña no puede estar vacía.');
+  return;
+} else if (password.length < 4) {
+  alert('La contraseña debe tener al menos 4 caracteres.');
+  return;
+}
+
+
     let body = {nombre, apellido, direccion, telefono, email, rol, password};
     console.log(body);
 
